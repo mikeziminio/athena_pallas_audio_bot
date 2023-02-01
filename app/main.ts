@@ -46,7 +46,9 @@ async function runBot() {
         fileStream.on('close', async () => {
             await audioService.convertOggToWav(fileUuid);
             const text = await audioService.convertToText(fileUuid);
-            context.reply('✏️ ' + text, { reply_to_message_id: context.message.message_id });
+            if (text !== '') {
+                context.reply('✨ ' + text, { reply_to_message_id: context.message.message_id });
+            }
             audioService.removeFile(fileUuid, 'wav');
             audioService.removeFile(fileUuid, 'ogg');
         });
