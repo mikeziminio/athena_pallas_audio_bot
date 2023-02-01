@@ -1,5 +1,4 @@
 app/node_modules/
 app/dist/
 audio/
-vosk-models/*
 .env
